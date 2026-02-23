@@ -52,7 +52,7 @@ st.divider()
 
 st.header("4. Sliders e Inputs")
 number = st.slider('Selecciona un número', 0, 100, 50)
-st.write('El número seleccionado es ', number)
+st.write('El número seleccionado es ', number, '🤰')
 
 title = st.text_input('Título de la película', 'La vida es bella')
 st.write('La película actual es', title)
