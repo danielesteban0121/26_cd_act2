@@ -1,4 +1,5 @@
 import streamlit as st
+import numpy as np
 
 st.title("Primera prueba")
 
@@ -109,11 +110,36 @@ else:
             
 
 
+st.divider()
+ 
+st.title(" Lista de Compras (Session State)")
+
+if 'Productos' not in st.session_state:
+    st.session_state.Productos = []
+
+Producto = st.text_input("Ingrese el producto que desea agregar:", key="input_producto")
+
+if st.button("Agregar producto") and Producto:
+    st.session_state.Productos.append(Producto)
+    st.success(f"Producto '*{Producto}*' agregado!")
+
+st.write("Tus Productos:")
+for i, tarea in enumerate(st.session_state.Productos):
+    st.write(f"{i + 1}. {tarea}")
+
+if st.button("Limpiar lista"):
+    st.session_state.Productos = []
+    st.rerun()
+
+st.divider()
 
 
+st.title(" Gráfico Interactivo")
 
-
-
-
-
+st.subheader("Gráfico Interactivo")
+Num = st.slider("Selecciona el número de datos a generar:", 10, 100, 50)
+Lista = np.random.rand(Num)
+st.line_chart(Lista)
+if st.button("Regenerar datos"):
+    st.rerun()
 
